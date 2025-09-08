@@ -1,0 +1,37 @@
+title: "zeseung의 GitHub 블로그"
+description: "개발과 일상을 기록하는 블로그입니다."
+baseurl: ""
+url: "https://zeseung.github.io"
+author: "zeseung"
+email: "your-email@example.com"
+
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+paginate: 5
+paginate_path: "/page:num/"
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+social:
+  github: "zeseung"
+
+date_format: "%Y년 %m월 %d일"
+timezone: Asia/Seoul

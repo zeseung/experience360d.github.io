@@ -1,0 +1,20 @@
+# 다른 프로젝트들 제외
+cursor-talk-to-figma-mcp/
+game_hero_adventure/
+landingpage/
+sample/
+github-blog/
+
+# Jekyll 관련
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# OS 관련
+.DS_Store
+Thumbs.db
+
+# Editor 관련
+.vscode/
+.idea/
