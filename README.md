@@ -3,7 +3,7 @@
 Jekyll을 사용한 GitHub Pages 블로그입니다.
 
 ## 블로그 주소
-https://experience360d.github.io
+https://zeseung.github.io/experience360d
 
 ## 설정 완료 안내
 
