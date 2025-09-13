@@ -1,9 +1,9 @@
-# experience360d.github.io
+# zeseung.github.io
 
 Jekyll을 사용한 GitHub Pages 블로그입니다.
 
 ## 블로그 주소
-https://zeseung.github.io/experience360d
+https://zeseung.github.io
 
 ## 설정 완료 안내
 
@@ -15,7 +15,7 @@ https://zeseung.github.io/experience360d
 
 ## 다음 단계
 
-1. GitHub에서 `experience360d.github.io` 레포지토리 생성
+1. GitHub에서 `zeseung.github.io` 레포지토리 생성
 2. 이 코드를 푸시
 3. GitHub Pages 설정
 4. 10-15분 후 블로그 접속 가능
