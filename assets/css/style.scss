@@ -103,8 +103,23 @@ body {
 /* 인트로 섹션 */
 .intro-section {
   text-align: center;
-  padding: 2rem 0;
+  padding: 3rem 0;
   margin-bottom: 3rem;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%239C92AC" fill-opacity="0.05" fill-rule="nonzero"><circle cx="30" cy="30" r="4"/></g></g></svg>');
+    pointer-events: none;
+  }
   
   .intro-text {
     font-size: 1.2rem;
@@ -256,5 +271,95 @@ pre {
   body {
     background-color: #ffffff;
     color: #1f2937;
+  }
+}
+
+/* 스킬 태그 */
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.skill-tag {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    color: white;
+    text-decoration: none;
+  }
+}
+
+/* 포스트 카테고리 태그 */
+.post-categories {
+  margin-top: 0.5rem;
+  
+  .category-tag {
+    display: inline-block;
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-right: 0.3rem;
+    text-decoration: none;
+    
+    &:hover {
+      background: rgba(102, 126, 234, 0.2);
+      color: #667eea;
+      text-decoration: none;
+    }
+  }
+}
+
+/* 읽기 시간 표시 */
+.reading-time {
+  color: #6b7280;
+  font-size: 0.8rem;
+  font-weight: 500;
+  
+  &::before {
+    content: "📖 ";
+  }
+}
+
+/* 소셜 링크 */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      color: white;
+      text-decoration: none;
+    }
   }
 }
