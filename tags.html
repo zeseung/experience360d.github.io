@@ -1,0 +1,167 @@
+---
+layout: page
+title: 태그
+description: 모든 태그를 한눈에 볼 수 있는 페이지입니다.
+permalink: /tags/
+---
+
+<div class="tags-page">
+  <h1>모든 태그</h1>
+  <p>블로그의 모든 태그를 확인하고 관련 포스트를 찾아보세요.</p>
+  
+  <div class="tag-cloud">
+    {% assign tags = site.tags | sort %}
+    {% for tag in tags %}
+      <a href="#{{ tag[0] | slugify }}" class="tag-link" data-count="{{ tag[1].size }}">
+        {{ tag[0] }}
+        <span class="tag-count">{{ tag[1].size }}</span>
+      </a>
+    {% endfor %}
+  </div>
+  
+  <div class="tag-sections">
+    {% for tag in tags %}
+      <section id="{{ tag[0] | slugify }}" class="tag-section">
+        <h2>{{ tag[0] }} <span class="tag-count">({{ tag[1].size }})</span></h2>
+        <div class="posts-list">
+          {% for post in tag[1] %}
+            <article class="post-item">
+              <time class="post-date">{{ post.date | date: "%Y.%m.%d" }}</time>
+              <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+              {% if post.excerpt %}
+                <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+              {% endif %}
+            </article>
+          {% endfor %}
+        </div>
+      </section>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+.tags-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.tag-cloud {
+  margin: 2rem 0;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.tag-link {
+  display: inline-block;
+  margin: 0.25rem;
+  padding: 0.5rem 1rem;
+  background-color: #ff0a16;
+  color: white;
+  text-decoration: none;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.tag-link:hover {
+  background-color: #e00914;
+  transform: translateY(-2px);
+  text-decoration: none;
+  color: white;
+}
+
+.tag-count {
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+}
+
+.tag-sections {
+  margin-top: 3rem;
+}
+
+.tag-section {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #eee;
+}
+
+.tag-section:last-child {
+  border-bottom: none;
+}
+
+.tag-section h2 {
+  color: #ff0a16;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #ff0a16;
+}
+
+.posts-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.post-item {
+  padding: 1.5rem;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease;
+}
+
+.post-item:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.post-date {
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.post-item h3 {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.post-item h3 a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.post-item h3 a:hover {
+  color: #ff0a16;
+}
+
+.post-excerpt {
+  color: #666;
+  line-height: 1.6;
+  margin: 0.5rem 0 0 0;
+}
+
+@media (max-width: 600px) {
+  .tags-page {
+    padding: 1rem;
+  }
+  
+  .tag-cloud {
+    padding: 1rem;
+  }
+  
+  .tag-link {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .post-item {
+    padding: 1rem;
+  }
+}
+</style>

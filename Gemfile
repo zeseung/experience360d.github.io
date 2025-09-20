@@ -3,11 +3,11 @@ source "https://rubygems.org"
 # Jekyll 버전 지정
 gem "jekyll", "~> 4.3.0"
 
-# 기본 테마
-gem "minima", "~> 2.5"
+# Jekflix 테마
+gem "jekflix"
 
-# GitHub Pages 호환성
-gem "github-pages", group: :jekyll_plugins
+# GitHub Pages 호환성 (로컬 개발용으로 주석 처리)
+# gem "github-pages", group: :jekyll_plugins
 
 # 플러그인들
 group :jekyll_plugins do
@@ -15,6 +15,7 @@ group :jekyll_plugins do
   gem "jekyll-sitemap"
   gem "jekyll-seo-tag"
   gem "jekyll-paginate"
+  gem "jekyll-paginate-content"
 end
 
 # Windows 및 JRuby용 tzinfo-data gem
