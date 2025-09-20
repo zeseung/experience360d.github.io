@@ -1,20 +1,32 @@
-# 다른 프로젝트들 제외
-cursor-talk-to-figma-mcp/
-game_hero_adventure/
-landingpage/
-sample/
-github-blog/
-
-# Jekyll 관련
+# Jekyll 빌드 결과물
 _site/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
 
+# Ruby 관련
+.bundle/
+vendor/
+
 # OS 관련
 .DS_Store
 Thumbs.db
+*.tmp
+*.temp
 
 # Editor 관련
 .vscode/
 .idea/
+*.swp
+*.swo
+
+# 로그 파일
+*.log
+
+# 환경 설정
+.env
+.env.local
+
+# Node.js (필요시)
+node_modules/
+npm-debug.log*

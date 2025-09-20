@@ -2,53 +2,22 @@
 layout: default
 ---
 
-<main class="content" role="main">
-  <article class="post">
-    {% if page.image %}
-    <div class="article-image">
-      <div class="post-image-image" style="background-image: url({% if page.image %}{{ page.image }}{% endif %})">
-        Article Image
+<main class="content max-w-4xl mx-auto px-6 py-12" role="main">
+  <article class="post-page bg-white">
+    <nav class="post-navigation mb-12">
+      <a href="/" class="back-to-home inline-flex items-center text-primary border border-primary px-6 py-3 rounded-full text-sm font-semibold hover:bg-primary hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-md">← 블로그 홈</a>
+    </nav>
+    <header class="post-page-header mb-12 pb-8 border-b border-gray-200">
+      <h1 class="post-page-title text-4xl font-bold text-gray-900 mb-4 leading-tight tracking-tight">{{ page.title }}</h1>
+      <div class="post-page-meta">
+        <time datetime="{{ page.date | date: "%Y-%m-%d" }}" class="text-sm text-gray-500 font-medium">{{ page.date | date: "%Y.%m.%d" }}</time>
       </div>
-      <div class="post-image-image2" style="background-image: url({% if page.image %}{{ page.image }}{% endif %})">
-        Article Image
+    </header>
+    
+    <section class="post-page-content prose prose-xl max-w-none text-gray-700 leading-relaxed mb-16">
+      <div class="space-y-6">
+        {{content}}
       </div>
-      <div class="post-meta">
-        <h1 class="post-title">{{ page.title }}</h1>
-        <div class="cf post-meta-text">
-          <div class="author-image" style="background-image: url({{ site.author_image }})">Blog Logo</div>
-          <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">{{ site.author }}</h4>
-          on
-          <time datetime="{{ page.date | date: "%F %R" }}">{{ page.date | date_to_string }}</time>
-          <!-- , tagged on {{#foreach tags}}<span class="post-tag-{{slug}}">{{#if @first}}{{else}}, {{/if}}<a href="/tag/{{slug}}">{{name}}</a></span>{{/foreach}} -->
-        </div>
-        <div style="text-align:center">
-          <a href="#topofpage" class="topofpage"><i class="fa fa-angle-down"></i></a>
-        </div>
-      </div>
-    </div>
-    {% else %}
-    <div class="noarticleimage">
-      <div class="post-meta">
-        <h1 class="post-title">{{ page.title }}</h1>
-        <div class="cf post-meta-text">
-          <div class="author-image" style="background-image: url({{ site.author_image }})">Blog Logo</div>
-          <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">{{ site.author }}</h4>
-          on
-          <time datetime="{{ page.date | date_to_xml_schema }}">{{ page.date | date_to_string }}</time>
-          <!-- , tagged on {{#foreach tags}}<span class="post-tag-{{slug}}">{{#if @first}}{{else}}, {{/if}}<a href="/tag/{{slug}}">{{name}}</a></span>{{/foreach}} -->
-        </div>
-      </div>
-    </div>
-    <br>
-    <br>
-    <br>
-    {% endif %}
-    <section class="post-content">
-      <div class="post-reading">
-        <span class="post-reading-time"></span> read
-      </div>
-      <a name="topofpage"></a>
-      {{content}}
     </section>
     <footer class="post-footer">
       <section class="share">
@@ -62,29 +31,19 @@ layout: default
         {% endfor %}
       </section>
     </footer>
-    <div class="bottom-teaser cf">
-      <div class="isLeft">
-        <h5 class="index-headline featured"><span>Written by</span></h5>
-        <section class="author">
-          <div class="author-image" style="background-image: url({{site.author_image}})">Blog Logo</div>
-          <h4>{{ site.author }}</h4>
-          <p class="bio">{{site.description}}</p>
-          <hr>
-          <p class="published">Published <time datetime="{{ page.date | date: "%F %R" }}">{{ page.date | date_to_string }}</time></p>
+    <div class="bottom-teaser-vertical mt-20 pt-12 border-t border-gray-200">
+      <div class="author-section text-center">
+        <section class="author flex flex-col items-center gap-6">
+          <a href="/" class="author-image-link">
+            <div class="author-image w-28 h-28 rounded-full bg-cover bg-center shadow-lg hover:shadow-xl transition-shadow duration-300 hover:scale-105 transform cursor-pointer" style="background-image: url({{site.author_image}})"></div>
+          </a>
+          <div class="author-info space-y-3">
+            <h4 class="text-2xl font-bold text-gray-900">{{ site.author }}</h4>
+            <p class="bio text-gray-600 text-lg max-w-lg leading-relaxed">{{site.description}}</p>
+            <p class="published text-sm text-gray-500 font-medium">Published <time datetime="{{ page.date | date: "%Y-%m-%d" }}">{{ page.date | date: "%Y.%m.%d" }}</time></p>
+          </div>
         </section>
       </div>
-      {{#if @blog.cover}}
-      <div class="isRight">
-        <h5 class="index-headline featured"><span>Supported by</span></h5>
-        <footer class="site-footer">
-          <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
-          <a class="subscribe" href="{{ "/feed.xml" | prepend: site.baseurl }}"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
-          <div class="inner">
-            <section class="copyright">All content copyright <a href="{{@blog.url}}/">{{site.author}}</a> &copy; {{ site.time | date: '%Y' }}<br>All rights reserved.</section>
-          </div>
-        </footer>
-      </div>
-      {{/if}}
     </div>
   </article>
 </main>

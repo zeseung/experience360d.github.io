@@ -1,12 +1,12 @@
 # Site Settings (Mediator Theme)
 title: zeseung의 GitHub 블로그
 description: 개발과 일상을 기록하는 블로그입니다.
-logo: 'https://via.placeholder.com/300x300/333/fff?text=Z'
-cover: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'
+logo: '/assets/images/logo.png'
+cover: '/assets/images/cover.jpg'
 name: 'zeseung'
 email: your-email@example.com
 author: zeseung
-author_image: 'https://via.placeholder.com/300x300/57A3E8/fff?text=zeseung'
+author_image: '/assets/images/logo.png'
 
 # Social Media Settings
 social:
@@ -74,7 +74,7 @@ plugins:
 
 # Timezone
 timezone: Asia/Seoul
-date_format: "%Y년 %m월 %d일"
+date_format: "%Y.%m.%d"
 
 # Exclude
 exclude:

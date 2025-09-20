@@ -1,0 +1,209 @@
+# Cursor Rules for zeseung's GitHub Blog
+
+## 프로젝트 개요
+- Jekyll 기반 GitHub Pages 블로그  
+- Mediator 테마 + Tailwind CSS 하이브리드
+- Ruby 3.4 + Jekyll 4.3 환경
+- 한국어 콘텐츠 중심
+- 모던 오버레이 헤로 디자인
+
+## 개발 환경 설정
+- Ruby 3.4.6
+- Jekyll 4.3.4
+- Bundler 2.7.2
+- Windows 10/11 환경
+- Tailwind CSS (CDN 방식)
+
+## Git 관리 규칙
+- **중요**: Git push는 사용자가 명시적으로 요청할 때만 실행
+- 자동 푸시 금지
+- 커밋 메시지는 한국어/영어 혼용 가능
+- 의미있는 커밋 단위로 분할
+
+## 파일 구조
+```
+├── _config.yml          # Jekyll 설정
+├── _layouts/            # 레이아웃 템플릿 (default.html, post.html)
+├── _posts/              # 블로그 포스트
+├── assets/images/       # 이미지 자원 (logo.png, cover.jpg)
+├── css/main.scss        # 메인 스타일시트
+├── js/                  # JavaScript
+├── index.html           # 메인 페이지
+└── Gemfile              # Ruby 의존성
+```
+
+## 디자인 시스템 (2025.09.21 확정)
+
+### 폰트 시스템
+- **한글 Sans-serif**: Nanum Gothic (제목, UI 요소)
+- **한글 Serif**: Nanum Myeongjo (본문 텍스트)
+- **시스템 폰트 폴백**: ui-sans-serif, system-ui, Georgia
+- **폰트 최적화**: font-display: swap, preconnect 적용
+
+### 폰트 크기 체계 (메인 페이지 기준)
+```scss
+// 헤로 섹션
+.blog-title: text-5xl (48px)        // 메인 제목
+.blog-description: text-2xl (24px)  // 메인 설명
+
+// 포스트 카드
+.post-title: text-2xl (24px)        // 포스트 제목
+.post-excerpt: text-lg (18px)       // 포스트 요약 (3줄 제한)
+.post-meta: text-sm (14px)          // 날짜
+
+// 포스트 페이지
+.post-page-title: text-4xl (36px)   // 포스트 제목
+.post-content h2: 1.4rem (22px)     // 본문 주요 제목
+.post-content h3: 1.3rem (21px)     // 본문 부제목
+.post-content h4-h6: 1.2rem-1.05rem // 본문 소제목
+
+// UI 요소
+.linkedin-button: text-2xs (10px)   // LinkedIn 버튼
+.pagination: text-sm (14px)         // 페이지네이션
+.back-to-home: text-sm (14px)       // 홈 돌아가기 버튼
+```
+
+### 색상 팔레트
+```scss
+// 주요 색상
+$primary-color: #4a90e2          // 메인 브랜드 컬러
+$text-color: #333333             // 기본 텍스트
+
+// 그레이 스케일 (Tailwind 기준)
+text-gray-900: 메인 제목 (진한 검정)
+text-gray-800: 서브 제목  
+text-gray-700: 본문 텍스트
+text-gray-600: 보조 텍스트
+text-gray-500: 날짜, 메타 정보
+text-white/90: 오버레이 요소 (90% 투명도)
+
+// 배경 색상
+bg-white: 기본 배경
+bg-gray-50: 보조 배경 (페이지네이션 등)
+bg-transparent: 투명 배경
+```
+
+### 간격 시스템 (8단위 기반)
+```scss
+// 기본 간격
+gap-4: 1rem (16px)     // 작은 간격
+gap-6: 1.5rem (24px)   // 중간 간격  
+gap-8: 2rem (32px)     // 큰 간격
+
+// 마진/패딩
+mb-3: 0.75rem (12px)   // 제목-설명 간격
+mb-4: 1rem (16px)      // 기본 하단 간격
+mb-6: 1.5rem (24px)    // 섹션 간격
+mb-8: 2rem (32px)      // 큰 섹션 간격
+mb-12: 3rem (48px)     // 페이지 레벨 간격
+mb-16: 4rem (64px)     // 최대 간격
+
+// 컨테이너
+max-w-4xl: 56rem (896px)  // 메인 컨테이너 최대 너비
+px-6: 1.5rem (24px)       // 좌우 패딩
+```
+
+### 날짜 형식 표준
+- **통일 형식**: `YYYY.MM.DD` (예: 2024.12.09)
+- **모든 페이지 동일**: 메인, 포스트 헤더, 포스트 하단
+- **Jekyll 필터**: `{{ date | date: "%Y.%m.%d" }}`
+
+### 레이아웃 구조
+
+#### 메인 페이지 (index.html)
+```html
+<!-- 헤로 섹션 (40vh 높이) -->
+.hero-section (오버레이 헤더 + 배경 이미지)
+  ├── 다크 그라데이션 오버레이
+  ├── 블로그 제목 (text-5xl, 흰색, 그림자)
+  ├── 블로그 설명 (text-2xl, 흰색 90%)
+  └── LinkedIn 버튼 (text-2xs, 반투명 배경)
+
+<!-- 콘텐츠 영역 -->
+.content
+  └── 포스트 카드들 (space-y-8, 전체 클릭 가능)
+      ├── 제목 (text-2xl)
+      ├── 요약 (text-lg, 3줄 제한)
+      └── 날짜 (text-sm)
+```
+
+#### 포스트 페이지 (_layouts/post.html)
+```html
+.post-page
+  ├── 홈 돌아가기 버튼 (둥근 테두리, 호버 효과)
+  ├── 포스트 헤더 (제목 + 날짜, 좌정렬)
+  ├── 본문 콘텐츠 (prose-xl)
+  └── 작성자 영역
+      ├── 프로필 이미지 (홈으로 링크, 호버 효과)
+      ├── 작성자 이름
+      ├── 설명
+      └── 발행일
+```
+
+### 인터랙션 디자인
+```scss
+// 호버 효과
+.card-hover: hover:shadow-lg + hover:-translate-y-1
+.button-hover: hover:scale-105 + hover:shadow-md
+.linkedin-hover: scale(1.03) + translateY(-1px)
+
+// 전환 효과
+transition-all duration-300: 기본 전환
+transition-colors duration-300: 색상 전환만
+transition-shadow duration-300: 그림자 전환만
+
+// 그림자 시스템
+shadow-sm: 기본 그림자
+shadow-md: 중간 그림자 (버튼 등)
+shadow-lg: 큰 그림자 (카드 호버)
+shadow-xl: 최대 그림자 (특별한 호버)
+```
+
+## 콘텐츠 규칙
+- 이모지 사용 금지 (전문적인 느낌)
+- 한국어 콘텐츠 우선
+- 링크는 새 창에서 열기 (external links)
+- 이미지는 /assets/images/ 폴더에 저장
+
+## 스타일 가이드라인
+
+### 반드시 준수사항
+1. **폰트 크기**: 메인 페이지 기준 체계 유지
+2. **날짜 형식**: YYYY.MM.DD 통일 필수
+3. **간격 시스템**: 8단위 기반 (4, 6, 8, 12, 16) 사용
+4. **색상**: 정의된 그레이 스케일과 primary 색상만 사용
+5. **호버 효과**: duration-300 전환 효과 적용
+6. **텍스트 제한**: 포스트 요약은 3줄로 제한 (line-clamp-3)
+
+### 컴포넌트별 규칙
+- **LinkedIn 버튼**: text-2xs, 반투명 배경, 최소 크기 유지
+- **포스트 카드**: 전체 클릭 가능, 호버시 상승 효과
+- **페이지네이션**: 투명 배경, 은은한 스타일
+- **프로필 이미지**: 홈 링크, 호버시 확대 효과
+- **날짜**: 모든 곳에서 text-sm (14px) 크기 통일
+
+### 금지 사항
+- 자동 Git push
+- 사용자 확인 없는 파일 삭제
+- 중요 설정 파일 무단 수정
+- 불필요한 의존성 추가
+- 이모지 사용 (전문적 느낌 해침)
+- 정의되지 않은 폰트 크기 사용
+- 날짜 형식 변경
+- ::after 가상 요소로 장식 원 생성
+
+### 허용 사항
+- 파일 생성/수정
+- 정의된 스타일 시스템 내에서 조정
+- 레이아웃 개선 (가이드라인 준수 시)
+- 버그 수정
+- 성능 최적화
+- Tailwind 클래스 추가 사용
+
+## 특별 지시사항
+- 모든 응답은 한국어로
+- 단계별 진행 상황 보고
+- 변경사항 설명 필수
+- 사용자 승인 후 진행
+- 디자인 일관성 최우선 고려
+- 새로운 요소 추가시 기존 스타일 시스템과 조화 확인
