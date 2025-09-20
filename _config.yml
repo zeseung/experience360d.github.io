@@ -1,78 +1,65 @@
-# Site Settings
-name: zeseung의 GitHub 블로그
-title: zeseung의 GitHub 블로그 | 개발과 일상을 기록하는 블로그
+# Site Settings (Mediator Theme)
+title: zeseung의 GitHub 블로그
 description: 개발과 일상을 기록하는 블로그입니다.
-tags:
-  - blog
-  - 개발
-  - programming
-  - jekyll
-  - github
+logo: 'https://via.placeholder.com/300x300/333/fff?text=Z'
+cover: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'
+name: 'zeseung'
 email: your-email@example.com
-disqus_username: # Disqus 사용시 입력
-show_hero: true
-menu:
-  - title: 홈
-    url: /
-  - title: 소개
-    url: /about
-  - title: 연락처
-    url: /contact
-  - title: RSS
-    url: /feed.xml
+author: zeseung
+author_image: 'https://via.placeholder.com/300x300/57A3E8/fff?text=zeseung'
 
 # Social Media Settings
-github_username: zeseung
-# facebook_username: 
-# twitter_username: 
-# instagram_username: 
-# linkedin_username: 
-# medium_username: 
+social:
+  - icon: twitter
+    url: 
+    desc: Follow me on twitter
+    share_url: http://twitter.com/share
+    share_title: ?text=
+    share_link: "&amp;url="
 
-# Posts Settings
-show_time_bar: true
-show_modal_on_exit: false
-show_modal_on_finish_post: true
-two_columns_layout: true
+  - icon: facebook
+    url: 
+    desc: Connect on facebook
+    share_url: //www.facebook.com/sharer.php
+    share_title: ?t=
+    share_link: "&amp;u="
+
+  - icon: github-alt
+    url: https://github.com/zeseung
+    desc: Fork me on github
+    share_url:
+    share_title:
+    share_link:
 
 # Advanced Settings
 baseurl: ""
 url: "https://zeseung.github.io"
 google_analytics: # Google Analytics ID 입력
-language: "ko"
-categories_folder: category
-sent_message_url: "/contact/message-sent/"
 
 # Build settings
 markdown: kramdown
 highlighter: rouge
-theme: jekflix
 permalink: /:title/
-collections:
-  authors:
-    output: true
 paginate: 5
-paginate_path: "/page/:num/"
-show_get_theme_btn: false
-use_logo: false
+paginate_path: "/page:num/"
 
-# Content paginator
-paginate_content:
-  enabled: true
-  debug: false
-  collections:
-    - posts
-  auto: false
-  separator: "--page-break--"
-  permalink: "/:num/"
-  seo_canonical: true
-  properties:
-    part:
-      is_generated: true
-    last:
-      is_generated: true
-    single:
-      is_generated: true
+# Content paginator (disabled for compatibility)
+# paginate_content:
+#   enabled: true
+#   debug: false
+#   collections:
+#     - posts
+#   auto: false
+#   separator: "--page-break--"
+#   permalink: "/:num/"
+#   seo_canonical: true
+#   properties:
+#     part:
+#       is_generated: true
+#     last:
+#       is_generated: true
+#     single:
+#       is_generated: true
 
 # SASS
 sass:
@@ -81,7 +68,6 @@ sass:
 # Plugins
 plugins:
   - jekyll-paginate
-  - jekyll-paginate-content
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag

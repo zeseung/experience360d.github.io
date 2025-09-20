@@ -1,10 +1,16 @@
 source "https://rubygems.org"
 
-# Jekyll 버전 지정
+# Jekyll 버전 지정 (최신 버전으로 업데이트)
 gem "jekyll", "~> 4.3.0"
 
-# Jekflix 테마
-gem "jekflix"
+# Ruby 3.4 호환성을 위한 필수 gem들
+gem "csv"
+gem "logger"
+gem "base64"
+gem "bigdecimal"
+gem "webrick"
+
+# Mediator 테마는 직접 파일로 적용
 
 # GitHub Pages 호환성 (로컬 개발용으로 주석 처리)
 # gem "github-pages", group: :jekyll_plugins
@@ -15,7 +21,6 @@ group :jekyll_plugins do
   gem "jekyll-sitemap"
   gem "jekyll-seo-tag"
   gem "jekyll-paginate"
-  gem "jekyll-paginate-content"
 end
 
 # Windows 및 JRuby용 tzinfo-data gem
@@ -24,8 +29,8 @@ platforms :mingw, :x64_mingw, :mswin, :jruby do
   gem "tzinfo-data"
 end
 
-# Performance-booster for watching directories on Windows
-gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
+# Performance-booster for watching directories on Windows (disabled due to compatibility)
+# gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
 
 # Lock `http_parser.rb` gem to `v0.6.x` on JRuby builds since newer versions of the gem
 # do not have a Java counterpart.
