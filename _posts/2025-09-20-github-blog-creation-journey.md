@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Jekyll과 Tailwind로 만든 모던 GitHub 블로그 제작기"
-date: 2025-09-21 00:05:00 +0900
+date: 2025-09-20 10:00:00 +0900
 categories: development
 ---
 
